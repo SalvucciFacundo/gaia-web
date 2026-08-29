@@ -21,10 +21,10 @@ templ Architecture() {
 		<div class="max-w-5xl mx-auto relative z-10">
 			<div class="text-center mb-16">
 				<h2 class="text-4xl md:text-5xl font-extrabold mb-4">
-					<span class="text-gradient-cyan">Hexagonal</span> Architecture
+					<span class="text-gradient-cyan">Hexagonal</span> Architecture &amp; SDD
 				</h2>
 				<p class="text-text-secondary text-lg max-w-2xl mx-auto">
-					Puertos y adaptadores. 33 paquetes Go. Un solo binario nativo.
+					Puertos y adaptadores. Pipeline estructurado de 8 fases. 33 paquetes Go.
 				</p>
 			</div>
 
@@ -38,12 +38,74 @@ templ Architecture() {
 				}
 			</div>
 
-			<!-- Architecture Diagram -->
-			<div class="glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl">
-				<div class="flex items-center justify-between mb-4 pb-3 border-b border-border-subtle">
+			<!-- Visual Mermaid Diagram 1: Hexagonal Architecture -->
+			<div class="glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl mb-8">
+				<div class="flex items-center justify-between mb-6 pb-3 border-b border-border-subtle">
 					<span class="text-xs font-mono text-neon-cyan flex items-center gap-2">
 						<span class="w-2 h-2 rounded-full bg-neon-cyan animate-pulse"></span>
-						Architecture Map
+						Mermaid Architecture Flow
+					</span>
+					<span class="text-xs font-mono text-text-muted">Interactive Ports &amp; Adapters</span>
+				</div>
+				<div class="mermaid flex justify-center py-4 overflow-x-auto">
+{ `flowchart TD
+    subgraph Core ["GAIA Kernel & Orchestrator"]
+        Loop["Main Loop: Think ➔ Act ➔ Learn ➔ Persist"]
+        PG["PolicyGuard (Tiers: read / sandbox / full)"]
+        KG["Knowledge Graph (User, Language, Project)"]
+        Loop <--> PG
+        Loop <--> KG
+    end
+
+    subgraph Subagents ["Specialized Subagents (@name)"]
+        direction TB
+        SDD_A["SDD: Explorer · Proposer · Specifier · Designer · Planner · Implementer · Verifier · Archiver"]
+        OD_A["On-Demand: Reviewer (4 Lenses) · Debugger · Researcher"]
+        BG_A["Background: Learner (Skill Synthesis) · Dynamic Subagents"]
+    end
+
+    subgraph Adapters ["Adapters & Interfaces"]
+        direction LR
+        LLM["19 LLM Providers & Pool"]
+        UI["Cyberpunk TUI · Web Dashboard · Desktop"]
+        GW["Gateways: Telegram · Discord · Slack · WhatsApp"]
+    end
+
+    Core <==> Subagents
+    Core <==> Adapters
+` }
+				</div>
+			</div>
+
+			<!-- Visual Mermaid Diagram 2: SDD 8-Stage Pipeline -->
+			<div class="glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl mb-8">
+				<div class="flex items-center justify-between mb-6 pb-3 border-b border-border-subtle">
+					<span class="text-xs font-mono text-neon-emerald flex items-center gap-2">
+						<span class="w-2 h-2 rounded-full bg-neon-emerald animate-pulse"></span>
+						Spec-Driven Development Pipeline
+					</span>
+					<span class="text-xs font-mono text-text-muted">8-Phase Continuous Delivery</span>
+				</div>
+				<div class="mermaid flex justify-center py-4 overflow-x-auto">
+{ `flowchart LR
+    E["1. Explore\n(@explorer)"] --> P["2. Propose\n(@proposer)"]
+    P --> S["3. Spec\n(@specifier)"]
+    S --> D["4. Design\n(@designer)"]
+    D --> T["5. Tasks\n(@planner)"]
+    T --> A["6. Apply\n(@implementer)"]
+    A --> V["7. Verify\n(@verifier)"]
+    V -- "Pass" --> ARC["8. Archive\n(@archiver)"]
+    V -. "Fail / Fix" .-> A
+` }
+				</div>
+			</div>
+
+			<!-- ASCII Blueprint -->
+			<div class="glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl">
+				<div class="flex items-center justify-between mb-4 pb-3 border-b border-border-subtle">
+					<span class="text-xs font-mono text-neon-purple flex items-center gap-2">
+						<span class="w-2 h-2 rounded-full bg-neon-purple animate-pulse"></span>
+						ASCII Blueprint Topology
 					</span>
 					<span class="text-xs font-mono text-text-muted">Single Binary Topology</span>
 				</div>

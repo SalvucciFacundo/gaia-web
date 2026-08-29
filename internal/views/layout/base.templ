@@ -15,6 +15,30 @@ templ Base(title string, description string) {
 			<link rel="stylesheet" href="/static/css/styles.css"/>
 			<script src="/static/js/htmx.min.js" defer></script>
 			<script src="/static/js/main.js" defer></script>
+			<script type="module">
+				import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+				mermaid.initialize({
+					startOnLoad: true,
+					theme: 'dark',
+					fontFamily: 'Outfit, Inter, sans-serif',
+					themeVariables: {
+						darkMode: true,
+						background: 'transparent',
+						primaryColor: '#121826',
+						primaryTextColor: '#00f0ff',
+						primaryBorderColor: '#00f0ff',
+						lineColor: '#00ff9d',
+						secondaryColor: '#1a2338',
+						tertiaryColor: '#0e121d',
+						mainBkg: '#121826',
+						nodeBorder: '#00f0ff',
+						clusterBkg: '#0e121d',
+						clusterBorder: 'rgba(255, 255, 255, 0.15)',
+						titleColor: '#f8fafc',
+						edgeLabelBackground: '#07090e'
+					}
+				});
+			</script>
 		</head>
 		<body class="min-h-full flex flex-col bg-bg-dark text-text-primary selection:bg-neon-cyan/20 selection:text-neon-cyan">
 			{ children... }
