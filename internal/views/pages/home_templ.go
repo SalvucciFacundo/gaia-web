@@ -84,7 +84,7 @@ func Home() templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = layout.Base("GAIA — Go Autonomous Intelligence Agent", "Programming-first autonomous agent written in Go. Single binary, zero external dependencies, 12+ subagents, SDD workflow, and persistent memory.").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = layout.Base("GAIA — Go Autonomous Intelligence Agent", "Programming-first autonomous agent written in Go. Single binary, zero dependencies, Spec-Driven Development (SDD), 19 LLM providers, Cyberpunk TUI, and real-time Web Dashboard.").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

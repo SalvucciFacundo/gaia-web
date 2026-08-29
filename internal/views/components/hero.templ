@@ -11,7 +11,7 @@ templ Hero() {
 			<!-- Badge -->
 			<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-border-neon-cyan/30 text-neon-cyan text-xs font-mono mb-8">
 				<span class="w-1.5 h-1.5 rounded-full bg-neon-cyan animate-pulse"></span>
-				v2.0 · Go 1.22+ · MIT License
+				v2.0 · Go 1.23+ · 19 LLM Providers · MIT License
 			</div>
 
 			<!-- Title -->
@@ -22,14 +22,14 @@ templ Hero() {
 			<!-- Tagline -->
 			<p class="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-4 leading-relaxed">
 				<span class="text-text-primary font-semibold">Go Autonomous Intelligence Agent</span>
-				— Un agente autónomo <span class="text-neon-cyan font-medium">programming-first</span> escrito en Go.
-				Binario único, cero dependencias externas.
+				— Agente autónomo <span class="text-neon-cyan font-medium">programming-first</span> en Go.
+				Binario único, cero dependencias, TUI Cyberpunk y Web Dashboard integrado.
 			</p>
 
 			<!-- Subtitle -->
-			<p class="text-base text-text-muted max-w-2xl mx-auto mb-10">
-				12 subagentes especializados · Mixture of Agents · Spec-Driven Development ·
-				Knowledge Graph · BR Code Review · Multi-Platform Gateway
+			<p class="text-base text-text-muted max-w-3xl mx-auto mb-10">
+				Spec-Driven Development (SDD) · 19 Providers con Credential Pool · Web Dashboard (`templ-islands`) ·
+				12+ Subagentes Especializados · PolicyGuard Security · Knowledge Graph
 			</p>
 
 			<!-- CTAs -->
@@ -63,24 +63,26 @@ templ Hero() {
 						<span class="text-xs text-text-muted ml-2 font-mono">terminal</span>
 					</div>
 					<button
-						onclick="copyCode(this, 'git clone https://github.com/SalvucciFacundo/gaia.git\ncd gaia && go build -o gaia ./cmd/gaia/\n./gaia')"
+						onclick="copyCode(this, 'curl -fsSL https://raw.githubusercontent.com/SalvucciFacundo/gaia/main/install.sh | bash')"
 						class="text-xs font-mono text-text-muted hover:text-neon-cyan transition-colors"
 					>
 						copy
 					</button>
 				</div>
 				<div class="p-5 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto">
-					<div class="text-text-muted"># Install GAIA</div>
+					<div class="text-text-muted"># Quick install (Linux &amp; macOS)</div>
 					<div>
-						<span class="text-neon-emerald">$</span> <span class="text-text-primary">git clone https://github.com/SalvucciFacundo/gaia.git</span>
+						<span class="text-neon-emerald">$</span> <span class="text-text-primary">curl -fsSL https://raw.githubusercontent.com/SalvucciFacundo/gaia/main/install.sh | bash</span>
+					</div>
+					<div class="mt-2 text-text-muted"># Launch Cyberpunk TUI or Web Dashboard</div>
+					<div>
+						<span class="text-neon-emerald">$</span> <span class="text-text-primary">gaia</span>
+						<span class="text-text-muted ml-3"># Interactive Terminal UI</span>
 					</div>
 					<div>
-						<span class="text-neon-emerald">$</span> <span class="text-text-primary">cd gaia &amp;&amp; go build -o gaia ./cmd/gaia/</span>
+						<span class="text-neon-emerald">$</span> <span class="text-text-primary">gaia serve 8080</span>
+						<span class="text-text-muted ml-3"># Real-time Web UI Dashboard</span>
 					</div>
-					<div>
-						<span class="text-neon-emerald">$</span> <span class="text-text-primary">./gaia</span>
-					</div>
-					<div class="text-text-muted mt-2"># &gt; @explorer investigate this codebase</div>
 				</div>
 			</div>
 

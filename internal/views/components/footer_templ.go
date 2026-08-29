@@ -11,6 +11,24 @@ import templruntime "github.com/a-h/templ/runtime"
 import "time"
 import "fmt"
 
+type DocLink struct {
+	Title string
+	Href  string
+}
+
+var DocsList = []DocLink{
+	{Title: "CLI Commands", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/cli.md"},
+	{Title: "TUI & In-Session", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/tui-commands.md"},
+	{Title: "SDD Workflow", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/sdd.md"},
+	{Title: "Architecture Overview", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/architecture.md"},
+	{Title: "Subagents System", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/subagents.md"},
+	{Title: "BR Code Review", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/review.md"},
+	{Title: "Security & PolicyGuard", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/security.md"},
+	{Title: "Token Efficiency & KG", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/token-efficiency.md"},
+	{Title: "Skills Hub", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/skills.md"},
+	{Title: "Configuration Reference", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/configuration.md"},
+}
+
 func Footer() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -32,33 +50,105 @@ func Footer() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<footer class=\"border-t border-border-subtle py-12 px-6 bg-bg-dark/80\"><div class=\"max-w-7xl mx-auto\"><div class=\"grid md:grid-cols-4 gap-8 mb-12\"><!-- Brand --><div class=\"md:col-span-1\"><span class=\"text-xl font-extrabold tracking-tight text-gradient\">GAIA</span><p class=\"text-sm text-text-muted mt-3 leading-relaxed\">Go Autonomous Intelligence Agent.<br>Programming-first. Single binary. Zero deps.</p></div><!-- Docs Links --><div><h4 class=\"text-xs font-semibold text-text-muted uppercase tracking-wider mb-4\">Documentation</h4><ul class=\"space-y-2 text-sm text-text-secondary\"><li><a href=\"https://github.com/SalvucciFacundo/gaia/blob/main/docs/cli.md\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">CLI Commands</a></li><li><a href=\"https://github.com/SalvucciFacundo/gaia/blob/main/docs/sdd.md\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">SDD Workflow</a></li><li><a href=\"https://github.com/SalvucciFacundo/gaia/blob/main/docs/architecture.md\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">Architecture</a></li><li><a href=\"https://github.com/SalvucciFacundo/gaia/blob/main/docs/subagents.md\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">Subagent System</a></li><li><a href=\"https://github.com/SalvucciFacundo/gaia/blob/main/docs/configuration.md\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">Configuration</a></li></ul></div><!-- Community --><div><h4 class=\"text-xs font-semibold text-text-muted uppercase tracking-wider mb-4\">Community</h4><ul class=\"space-y-2 text-sm text-text-secondary\"><li><a href=\"https://github.com/SalvucciFacundo/gaia\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">GitHub</a></li><li><a href=\"https://github.com/SalvucciFacundo/gaia/issues\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">Issues</a></li><li><a href=\"https://github.com/SalvucciFacundo/gaia/releases\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">Releases</a></li></ul></div><!-- License --><div><h4 class=\"text-xs font-semibold text-text-muted uppercase tracking-wider mb-4\">License</h4><ul class=\"space-y-2 text-sm text-text-secondary\"><li><a href=\"https://github.com/SalvucciFacundo/gaia/blob/main/LICENSE\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">MIT License</a></li><li><span class=\"text-text-muted text-xs leading-relaxed block mt-2\">Built with Go + Templ + HTMX. Inspired by Hermes Agent, Gentle-AI, ogcode, and pi-go.</span></li></ul></div></div><div class=\"pt-8 border-t border-border-subtle flex flex-col md:flex-row items-center justify-between gap-4\"><p class=\"text-xs text-text-muted\">&copy; ")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<footer class=\"border-t border-border-subtle py-12 px-6 bg-bg-dark/80\"><div class=\"max-w-7xl mx-auto\"><div class=\"grid grid-cols-1 md:grid-cols-4 gap-8 mb-12\"><!-- Brand --><div class=\"md:col-span-1\"><span class=\"text-xl font-extrabold tracking-tight text-gradient\">GAIA</span><p class=\"text-sm text-text-muted mt-3 leading-relaxed\">Go Autonomous Intelligence Agent.<br>Programming-first. Single binary. 19 LLM providers. Zero external deps.</p><div class=\"mt-4 flex items-center gap-2\"><span class=\"w-2 h-2 rounded-full bg-neon-emerald animate-pulse\"></span> <span class=\"text-xs font-mono text-neon-emerald\">v2.0 Active Release</span></div></div><!-- Docs Links Column 1 --><div><h4 class=\"text-xs font-semibold text-text-muted uppercase tracking-wider mb-4\">Core Documentation</h4><ul class=\"space-y-2 text-sm text-text-secondary\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var2 string
-		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", time.Now().Year()))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/footer.templ`, Line: 94, Col: 50}
+		for _, doc := range DocsList[:5] {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<li><a href=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var2 templ.SafeURL
+			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(doc.Href))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/footer.templ`, Line: 48, Col: 41}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var3 string
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(doc.Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/footer.templ`, Line: 49, Col: 20}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</a></li>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</ul></div><!-- Docs Links Column 2 --><div><h4 class=\"text-xs font-semibold text-text-muted uppercase tracking-wider mb-4\">Advanced &amp; Security</h4><ul class=\"space-y-2 text-sm text-text-secondary\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " GAIA. MIT License.</p><p class=\"text-xs text-text-muted\">Built by")
+		for _, doc := range DocsList[5:] {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<li><a href=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var4 templ.SafeURL
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(doc.Href))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/footer.templ`, Line: 62, Col: 41}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var5 string
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(doc.Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/footer.templ`, Line: 63, Col: 20}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</a></li>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</ul></div><!-- Community & Project --><div><h4 class=\"text-xs font-semibold text-text-muted uppercase tracking-wider mb-4\">Community</h4><ul class=\"space-y-2 text-sm text-text-secondary\"><li><a href=\"https://github.com/SalvucciFacundo/gaia\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">GitHub Repository</a></li><li><a href=\"https://github.com/SalvucciFacundo/gaia/issues\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">Issues &amp; Discussions</a></li><li><a href=\"https://github.com/SalvucciFacundo/gaia/releases\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">Releases</a></li><li><a href=\"https://github.com/SalvucciFacundo/gaia/blob/main/LICENSE\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-neon-cyan transition-colors\">MIT License</a></li></ul></div></div><div class=\"pt-8 border-t border-border-subtle flex flex-col md:flex-row items-center justify-between gap-4\"><p class=\"text-xs text-text-muted\">&copy; ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var3 string
-		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(" ")
+		var templ_7745c5c3_Var6 string
+		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", time.Now().Year()))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/footer.templ`, Line: 97, Col: 18}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/footer.templ`, Line: 100, Col: 50}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, " <a href=\"https://github.com/SalvucciFacundo\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-neon-cyan hover:glow-cyan transition-all duration-300 font-medium\">Facundo Salvucci</a></p><p class=\"text-xs text-text-muted font-mono\">gaia v2.0 · go 1.22+ · single binary</p></div></div></footer>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, " GAIA. MIT License.</p><p class=\"text-xs text-text-muted\">Built by")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var7 string
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(" ")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/footer.templ`, Line: 103, Col: 18}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, " <a href=\"https://github.com/SalvucciFacundo\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-neon-cyan hover:glow-cyan transition-all duration-300 font-medium\">Facundo Salvucci</a></p><p class=\"text-xs text-text-muted font-mono\">gaia v2.0 · go 1.23+ · single binary</p></div></div></footer>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

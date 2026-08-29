@@ -3,64 +3,82 @@ package components
 import "time"
 import "fmt"
 
+type DocLink struct {
+	Title string
+	Href  string
+}
+
+var DocsList = []DocLink{
+	{Title: "CLI Commands", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/cli.md"},
+	{Title: "TUI & In-Session", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/tui-commands.md"},
+	{Title: "SDD Workflow", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/sdd.md"},
+	{Title: "Architecture Overview", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/architecture.md"},
+	{Title: "Subagents System", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/subagents.md"},
+	{Title: "BR Code Review", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/review.md"},
+	{Title: "Security & PolicyGuard", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/security.md"},
+	{Title: "Token Efficiency & KG", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/token-efficiency.md"},
+	{Title: "Skills Hub", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/skills.md"},
+	{Title: "Configuration Reference", Href: "https://github.com/SalvucciFacundo/gaia/blob/main/docs/configuration.md"},
+}
+
 templ Footer() {
 	<footer class="border-t border-border-subtle py-12 px-6 bg-bg-dark/80">
 		<div class="max-w-7xl mx-auto">
-			<div class="grid md:grid-cols-4 gap-8 mb-12">
+			<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
 				<!-- Brand -->
 				<div class="md:col-span-1">
 					<span class="text-xl font-extrabold tracking-tight text-gradient">GAIA</span>
 					<p class="text-sm text-text-muted mt-3 leading-relaxed">
 						Go Autonomous Intelligence Agent.
 						<br/>
-						Programming-first. Single binary. Zero deps.
+						Programming-first. Single binary. 19 LLM providers. Zero external deps.
 					</p>
+					<div class="mt-4 flex items-center gap-2">
+						<span class="w-2 h-2 rounded-full bg-neon-emerald animate-pulse"></span>
+						<span class="text-xs font-mono text-neon-emerald">v2.0 Active Release</span>
+					</div>
 				</div>
 
-				<!-- Docs Links -->
+				<!-- Docs Links Column 1 -->
 				<div>
-					<h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">Documentation</h4>
+					<h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">Core Documentation</h4>
 					<ul class="space-y-2 text-sm text-text-secondary">
-						<li>
-							<a href="https://github.com/SalvucciFacundo/gaia/blob/main/docs/cli.md" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
-								CLI Commands
-							</a>
-						</li>
-						<li>
-							<a href="https://github.com/SalvucciFacundo/gaia/blob/main/docs/sdd.md" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
-								SDD Workflow
-							</a>
-						</li>
-						<li>
-							<a href="https://github.com/SalvucciFacundo/gaia/blob/main/docs/architecture.md" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
-								Architecture
-							</a>
-						</li>
-						<li>
-							<a href="https://github.com/SalvucciFacundo/gaia/blob/main/docs/subagents.md" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
-								Subagent System
-							</a>
-						</li>
-						<li>
-							<a href="https://github.com/SalvucciFacundo/gaia/blob/main/docs/configuration.md" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
-								Configuration
-							</a>
-						</li>
+						for _, doc := range DocsList[:5] {
+							<li>
+								<a href={ templ.SafeURL(doc.Href) } target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
+									{ doc.Title }
+								</a>
+							</li>
+						}
 					</ul>
 				</div>
 
-				<!-- Community -->
+				<!-- Docs Links Column 2 -->
+				<div>
+					<h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">Advanced &amp; Security</h4>
+					<ul class="space-y-2 text-sm text-text-secondary">
+						for _, doc := range DocsList[5:] {
+							<li>
+								<a href={ templ.SafeURL(doc.Href) } target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
+									{ doc.Title }
+								</a>
+							</li>
+						}
+					</ul>
+				</div>
+
+				<!-- Community & Project -->
 				<div>
 					<h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">Community</h4>
 					<ul class="space-y-2 text-sm text-text-secondary">
 						<li>
 							<a href="https://github.com/SalvucciFacundo/gaia" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
-								GitHub
+								GitHub Repository
 							</a>
 						</li>
 						<li>
 							<a href="https://github.com/SalvucciFacundo/gaia/issues" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
-								Issues
+								Issues &amp; Discussions
 							</a>
 						</li>
 						<li>
@@ -68,22 +86,10 @@ templ Footer() {
 								Releases
 							</a>
 						</li>
-					</ul>
-				</div>
-
-				<!-- License -->
-				<div>
-					<h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">License</h4>
-					<ul class="space-y-2 text-sm text-text-secondary">
 						<li>
 							<a href="https://github.com/SalvucciFacundo/gaia/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
 								MIT License
 							</a>
-						</li>
-						<li>
-							<span class="text-text-muted text-xs leading-relaxed block mt-2">
-								Built with Go + Templ + HTMX. Inspired by Hermes Agent, Gentle-AI, ogcode, and pi-go.
-							</span>
 						</li>
 					</ul>
 				</div>
@@ -105,7 +111,7 @@ templ Footer() {
 					</a>
 				</p>
 				<p class="text-xs text-text-muted font-mono">
-					gaia v2.0 · go 1.22+ · single binary
+					gaia v2.0 · go 1.23+ · single binary
 				</p>
 			</div>
 		</div>

@@ -15,19 +15,27 @@ type CodeSnippet struct {
 
 var SnippetsList = []CodeSnippet{
 	{
-		Label: "macOS / Linux",
-		Code:  "git clone https://github.com/SalvucciFacundo/gaia.git\ncd gaia\ngo build -o gaia ./cmd/gaia/\n./gaia",
+		Label: "Linux & macOS (Installer)",
+		Code:  "curl -fsSL https://raw.githubusercontent.com/SalvucciFacundo/gaia/main/install.sh | bash",
 	},
 	{
 		Label: "Windows (PowerShell)",
-		Code:  ".\\install.ps1",
+		Code:  "iwr -useb https://raw.githubusercontent.com/SalvucciFacundo/gaia/main/install.ps1 | iex",
+	},
+	{
+		Label: "Build from Source",
+		Code:  "git clone https://github.com/SalvucciFacundo/gaia.git\ncd gaia\ngo build -o gaia ./cmd/gaia/\n./gaia",
+	},
+	{
+		Label: "Web UI Dashboard",
+		Code:  "gaia serve 8080",
 	},
 	{
 		Label: "Docker Backend",
 		Code:  "gaia exec \"explain this project\" --backend docker",
 	},
 	{
-		Label: "SSH Backend",
+		Label: "SSH Remote Backend",
 		Code:  "gaia exec \"list files\" --backend ssh://user@server",
 	},
 }
@@ -53,19 +61,19 @@ func QuickStart() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"quickstart\" class=\"relative py-32 px-6\"><div class=\"bg-glow-orb bg-neon-cyan bottom-0 right-0 opacity-10\"></div><div class=\"max-w-5xl mx-auto relative z-10\"><div class=\"text-center mb-16\"><h2 class=\"text-4xl md:text-5xl font-extrabold mb-4\">Get Started in <span class=\"text-gradient-emerald\">Seconds</span></h2><p class=\"text-text-secondary text-lg max-w-2xl mx-auto\">Un solo comando y ya estás corriendo. Sin Python, sin Node.js, sin ffmpeg.</p></div><div class=\"grid md:grid-cols-2 gap-6\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"quickstart\" class=\"relative py-32 px-6\"><div class=\"bg-glow-orb bg-neon-cyan bottom-0 right-0 opacity-10\"></div><div class=\"max-w-5xl mx-auto relative z-10\"><div class=\"text-center mb-16\"><h2 class=\"text-4xl md:text-5xl font-extrabold mb-4\">Get Started in <span class=\"text-gradient-emerald\">Seconds</span></h2><p class=\"text-text-secondary text-lg max-w-2xl mx-auto\">Instalá con un solo comando o compilá el binario Go nativo sin dependencias.</p></div><div class=\"grid md:grid-cols-2 lg:grid-cols-3 gap-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for _, block := range SnippetsList {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"glass-card rounded-2xl border border-border-subtle overflow-hidden group hover:border-border-neon-emerald/30 transition-all duration-300\"><!-- Header --><div class=\"flex items-center justify-between px-5 py-3 border-b border-border-subtle bg-bg-surface/50\"><div class=\"flex items-center gap-2\"><span class=\"w-2.5 h-2.5 rounded-full bg-neon-emerald/60\"></span> <span class=\"text-xs font-mono text-text-muted\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"glass-card rounded-2xl border border-border-subtle overflow-hidden group hover:border-border-neon-emerald/30 transition-all duration-300 flex flex-col justify-between\"><!-- Header --><div class=\"flex items-center justify-between px-5 py-3 border-b border-border-subtle bg-bg-surface/50\"><div class=\"flex items-center gap-2\"><span class=\"w-2.5 h-2.5 rounded-full bg-neon-emerald/60\"></span> <span class=\"text-xs font-mono text-text-muted\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var2 string
 			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(block.Label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/quickstart.templ`, Line: 48, Col: 69}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/quickstart.templ`, Line: 56, Col: 69}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
@@ -88,14 +96,14 @@ func QuickStart() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "\" class=\"text-xs font-mono text-text-muted hover:text-neon-cyan transition-colors\">copy</button></div><!-- Code --><pre class=\"p-5 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto\"><code class=\"text-text-secondary\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "\" class=\"text-xs font-mono text-text-muted hover:text-neon-cyan transition-colors\">copy</button></div><!-- Code --><pre class=\"p-5 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto flex-1 flex items-center\"><code class=\"text-text-secondary\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(block.Code)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/quickstart.templ`, Line: 61, Col: 20}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/quickstart.templ`, Line: 69, Col: 20}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -106,7 +114,7 @@ func QuickStart() templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</div><!-- First Run --><div class=\"mt-8 glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle shadow-lg\"><div class=\"flex items-start gap-4\"><div class=\"w-10 h-10 rounded-xl bg-neon-cyan/10 border border-neon-cyan/20 flex items-center justify-center flex-shrink-0 text-neon-cyan font-bold text-lg\">1</div><div class=\"flex-1\"><h4 class=\"font-semibold text-text-primary mb-1\">First Run</h4><p class=\"text-sm text-text-secondary mb-3\">En el primer inicio, GAIA abre un asistente de configuración interactivo para configurar tu proveedor LLM e instalar las skills recomendadas.</p><div class=\"glass-card rounded-xl p-4 border border-border-subtle font-mono text-xs sm:text-sm\"><span class=\"text-neon-emerald\">$</span> <span class=\"text-text-primary\">gaia</span><br><span class=\"text-text-muted italic\"># Setup wizard starts automatically</span></div></div></div></div></div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</div><!-- First Run Wizard Card --><div class=\"mt-8 glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle shadow-lg\"><div class=\"flex items-start gap-4\"><div class=\"w-10 h-10 rounded-xl bg-neon-cyan/10 border border-neon-cyan/20 flex items-center justify-center flex-shrink-0 text-neon-cyan font-bold text-lg\">1</div><div class=\"flex-1\"><h4 class=\"font-semibold text-text-primary mb-1\">First Run Setup Wizard</h4><p class=\"text-sm text-text-secondary mb-3 leading-relaxed\">En el primer inicio, GAIA abre un asistente interactivo en la terminal para configurar tu proveedor LLM preferido (o autodetectar Ollama/Copilot) e instalar las skills recomendadas para tu stack.</p><div class=\"glass-card rounded-xl p-4 border border-border-subtle font-mono text-xs sm:text-sm\"><span class=\"text-neon-emerald\">$</span> <span class=\"text-text-primary\">gaia</span><br><span class=\"text-text-muted italic\"># Interactive setup starts automatically · Config stored in ~/.gaia/config.yaml</span></div></div></div></div></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

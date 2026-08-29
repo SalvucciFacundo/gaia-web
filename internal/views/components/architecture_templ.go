@@ -15,11 +15,11 @@ type StatItem struct {
 
 var StatsList = []StatItem{
 	{Label: "Subagentes", Value: "12+"},
-	{Label: "Paquetes Go", Value: "31"},
+	{Label: "Paquetes Go", Value: "33"},
 	{Label: "Comandos CLI", Value: "30+"},
-	{Label: "Lentes Review", Value: "4"},
+	{Label: "Providers LLM", Value: "19"},
+	{Label: "Interfaces UI", Value: "3"},
 	{Label: "Plataformas Gateway", Value: "5"},
-	{Label: "Providers LLM", Value: "4+"},
 }
 
 func Architecture() templ.Component {
@@ -43,7 +43,7 @@ func Architecture() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"architecture\" class=\"relative py-32 px-6\"><div class=\"bg-glow-orb bg-neon-emerald bottom-0 left-0 opacity-10\"></div><div class=\"max-w-5xl mx-auto relative z-10\"><div class=\"text-center mb-16\"><h2 class=\"text-4xl md:text-5xl font-extrabold mb-4\"><span class=\"text-gradient-cyan\">Hexagonal</span> Architecture</h2><p class=\"text-text-secondary text-lg max-w-2xl mx-auto\">Puertos y adaptadores. 31 paquetes Go. Un solo binario.</p></div><!-- Stats Grid --><div class=\"grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"architecture\" class=\"relative py-32 px-6\"><div class=\"bg-glow-orb bg-neon-emerald bottom-0 left-0 opacity-10\"></div><div class=\"max-w-5xl mx-auto relative z-10\"><div class=\"text-center mb-16\"><h2 class=\"text-4xl md:text-5xl font-extrabold mb-4\"><span class=\"text-gradient-cyan\">Hexagonal</span> Architecture</h2><p class=\"text-text-secondary text-lg max-w-2xl mx-auto\">Puertos y adaptadores. 33 paquetes Go. Un solo binario nativo.</p></div><!-- Stats Grid --><div class=\"grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -79,51 +79,53 @@ func Architecture() templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div><!-- Architecture Diagram --><div class=\"glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl\"><div class=\"flex items-center justify-between mb-4 pb-3 border-b border-border-subtle\"><span class=\"text-xs font-mono text-neon-cyan flex items-center gap-2\"><span class=\"w-2 h-2 rounded-full bg-neon-cyan animate-pulse\"></span> Architecture Map</span> <span class=\"text-xs font-mono text-text-muted\">Single Binary Topology</span></div><pre class=\"font-mono text-xs sm:text-xs leading-relaxed text-text-secondary overflow-x-auto p-2\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div><!-- Architecture Diagram --><div class=\"glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl\"><div class=\"flex items-center justify-between mb-4 pb-3 border-b border-border-subtle\"><span class=\"text-xs font-mono text-neon-cyan flex items-center gap-2\"><span class=\"w-2 h-2 rounded-full bg-neon-cyan animate-pulse\"></span> Architecture Map</span> <span class=\"text-xs font-mono text-text-muted\">Single Binary Topology</span></div><pre class=\"font-mono text-xs leading-relaxed text-text-secondary overflow-x-auto p-2\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(`┌──────────────────────────────────────────────────────────┐
-│                     GAIA (single binary)                    │
-│                                                            │
-│  ┌─────────────────────────────────────────────────┐      │
-│  │  ORCHESTRATOR — Main Agent Loop                 │      │
-│  │  • Think → Act → Learn → Persist                │      │
-│  │  • Delegates to specialized subagents           │      │
-│  │  • Synthesizes results, never does the work     │      │
-│  │  • Progressive skill index (~3k tokens)         │      │
-│  │  • Knowledge graph recall per turn              │      │
-│  └─────────────────────────────────────────────────┘      │
-│                           │                                │
-│  ┌────────────────────────┼────────────────────────┐      │
-│  │  SUBAGENT SYSTEM       │  Autonomous & Specialized│      │
-│  │                        │                         │      │
-│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐   │      │
-│  │  │Explorer ││Proposer││Specifier││ Designer  │   │      │
-│  │  └─────────┘└────────┘└────────┘└──────────┘   │      │
-│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐   │      │
-│  │  │ Planner ││Implement││Verifier││ Reviewer  │   │      │
-│  │  └─────────┘└────────┘└────────┘└──────────┘   │      │
-│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐   │      │
-│  │  │ Learner ││Research││Archiver││ Debugger  │   │      │
-│  │  └─────────┘└────────┘└────────┘└──────────┘   │      │
-│  └─────────────────────────────────────────────────┘      │
-│                           │                                │
-│  ┌─────────────────────────────────────────────────┐      │
-│  │  INFRASTRUCTURE                                  │      │
-│  │  ┌────────┐┌──────────┐┌──────┐┌───────────┐   │      │
-│  │  │LLM     ││Tool Exec ││Memory││Knowledge   │   │      │
-│  │  │Provider││Engine    ││Engram││Graph Recall│   │      │
-│  │  └────────┘└──────────┘└──────┘└───────────┘   │      │
-│  │  ┌────────┐┌──────────┐┌──────┐┌───────────┐   │      │
-│  │  │TUI     ││Desktop   ││MCP   ││Skills     │   │      │
-│  │  │BubbleTea││Wails     ││Client││Loader     │   │      │
-│  │  └────────┘└──────────┘└──────┘└───────────┘   │      │
-│  └─────────────────────────────────────────────────┘      │
-└──────────────────────────────────────────────────────────┘`)
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(`┌────────────────────────────────────────────────────────────────────────┐
+│                        GAIA (single Go binary)                         │
+│                                                                        │
+│  ┌───────────────────────────────────────────────────────────────┐     │
+│  │  ORCHESTRATOR & KERNEL — Main Agent Loop                      │     │
+│  │  • Think → Act → Learn → Persist                              │     │
+│  │  • PolicyGuard: Tier Permissions (read/sandbox/full)          │     │
+│  │  • Delegates to specialized subagents (@name)                 │     │
+│  │  • Progressive Skill Index & AST Security Audit               │     │
+│  │  • Knowledge Graph: 3 Scopes (User, Language, Project)        │     │
+│  └───────────────────────────────────────────────────────────────┘     │
+│                                │                                       │
+│  ┌─────────────────────────────┼───────────────────────────────┐       │
+│  │  SUBAGENT SYSTEM            │  Autonomous & Specialized     │       │
+│  │                                                             │       │
+│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐┌───────────┐   │       │
+│  │  │Explorer ││Proposer││Specifier││ Designer ││  Planner  │   │       │
+│  │  └─────────┘└────────┘└────────┘└──────────┘└───────────┘   │       │
+│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐┌───────────┐   │       │
+│  │  │Implement││Verifier││Reviewer││ Debugger ││ Researcher│   │       │
+│  │  └─────────┘└────────┘└────────┘└──────────┘└───────────┘   │       │
+│  │  ┌─────────┐┌────────┐┌─────────────────────────────────┐   │       │
+│  │  │ Learner ││Archiver││ Dynamic Subagents Generator    │   │       │
+│  │  └─────────┘└────────┘└─────────────────────────────────┘   │       │
+│  └─────────────────────────────────────────────────────────────┘       │
+│                                │                                       │
+│  ┌─────────────────────────────┴───────────────────────────────┐       │
+│  │  ADAPTERS & INFRASTRUCTURE                                  │       │
+│  │  ┌────────────────────┐┌──────────────────┐┌──────────────┐ │       │
+│  │  │ 19 LLM Providers   ││ Memory & Store   ││ Security     │ │       │
+│  │  │ Credential Pool    ││ SQLite + Engram  ││ AST Audit    │ │       │
+│  │  │ Auto-Failover/Cool ││ Knowledge Graph  ││ PolicyGuard  │ │       │
+│  │  └────────────────────┘└──────────────────┘└──────────────┘ │       │
+│  │  ┌────────────────────┐┌──────────────────┐┌──────────────┐ │       │
+│  │  │ Cyberpunk TUI      ││ Web UI Dashboard ││ Gateway      │ │       │
+│  │  │ Bubbletea + Lipgloss││ templ-islands/SSE││ Telegram/TG  │ │       │
+│  │  │ Wails Desktop      ││ (gaia serve)     ││ Discord/Slack│ │       │
+│  │  └────────────────────┘└──────────────────┘└──────────────┘ │       │
+│  └─────────────────────────────────────────────────────────────┘       │
+└────────────────────────────────────────────────────────────────────────┘`)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/architecture.templ`, Line: 88, Col: 181}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/architecture.templ`, Line: 90, Col: 223}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {

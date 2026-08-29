@@ -7,11 +7,11 @@ type StatItem struct {
 
 var StatsList = []StatItem{
 	{Label: "Subagentes", Value: "12+"},
-	{Label: "Paquetes Go", Value: "31"},
+	{Label: "Paquetes Go", Value: "33"},
 	{Label: "Comandos CLI", Value: "30+"},
-	{Label: "Lentes Review", Value: "4"},
+	{Label: "Providers LLM", Value: "19"},
+	{Label: "Interfaces UI", Value: "3"},
 	{Label: "Plataformas Gateway", Value: "5"},
-	{Label: "Providers LLM", Value: "4+"},
 }
 
 templ Architecture() {
@@ -24,7 +24,7 @@ templ Architecture() {
 					<span class="text-gradient-cyan">Hexagonal</span> Architecture
 				</h2>
 				<p class="text-text-secondary text-lg max-w-2xl mx-auto">
-					Puertos y adaptadores. 31 paquetes Go. Un solo binario.
+					Puertos y adaptadores. 33 paquetes Go. Un solo binario nativo.
 				</p>
 			</div>
 
@@ -47,45 +47,47 @@ templ Architecture() {
 					</span>
 					<span class="text-xs font-mono text-text-muted">Single Binary Topology</span>
 				</div>
-				<pre class="font-mono text-xs sm:text-xs leading-relaxed text-text-secondary overflow-x-auto p-2">
-{ `┌──────────────────────────────────────────────────────────┐
-│                     GAIA (single binary)                    │
-│                                                            │
-│  ┌─────────────────────────────────────────────────┐      │
-│  │  ORCHESTRATOR — Main Agent Loop                 │      │
-│  │  • Think → Act → Learn → Persist                │      │
-│  │  • Delegates to specialized subagents           │      │
-│  │  • Synthesizes results, never does the work     │      │
-│  │  • Progressive skill index (~3k tokens)         │      │
-│  │  • Knowledge graph recall per turn              │      │
-│  └─────────────────────────────────────────────────┘      │
-│                           │                                │
-│  ┌────────────────────────┼────────────────────────┐      │
-│  │  SUBAGENT SYSTEM       │  Autonomous & Specialized│      │
-│  │                        │                         │      │
-│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐   │      │
-│  │  │Explorer ││Proposer││Specifier││ Designer  │   │      │
-│  │  └─────────┘└────────┘└────────┘└──────────┘   │      │
-│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐   │      │
-│  │  │ Planner ││Implement││Verifier││ Reviewer  │   │      │
-│  │  └─────────┘└────────┘└────────┘└──────────┘   │      │
-│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐   │      │
-│  │  │ Learner ││Research││Archiver││ Debugger  │   │      │
-│  │  └─────────┘└────────┘└────────┘└──────────┘   │      │
-│  └─────────────────────────────────────────────────┘      │
-│                           │                                │
-│  ┌─────────────────────────────────────────────────┐      │
-│  │  INFRASTRUCTURE                                  │      │
-│  │  ┌────────┐┌──────────┐┌──────┐┌───────────┐   │      │
-│  │  │LLM     ││Tool Exec ││Memory││Knowledge   │   │      │
-│  │  │Provider││Engine    ││Engram││Graph Recall│   │      │
-│  │  └────────┘└──────────┘└──────┘└───────────┘   │      │
-│  │  ┌────────┐┌──────────┐┌──────┐┌───────────┐   │      │
-│  │  │TUI     ││Desktop   ││MCP   ││Skills     │   │      │
-│  │  │BubbleTea││Wails     ││Client││Loader     │   │      │
-│  │  └────────┘└──────────┘└──────┘└───────────┘   │      │
-│  └─────────────────────────────────────────────────┘      │
-└──────────────────────────────────────────────────────────┘` }
+				<pre class="font-mono text-xs leading-relaxed text-text-secondary overflow-x-auto p-2">
+{ `┌────────────────────────────────────────────────────────────────────────┐
+│                        GAIA (single Go binary)                         │
+│                                                                        │
+│  ┌───────────────────────────────────────────────────────────────┐     │
+│  │  ORCHESTRATOR & KERNEL — Main Agent Loop                      │     │
+│  │  • Think → Act → Learn → Persist                              │     │
+│  │  • PolicyGuard: Tier Permissions (read/sandbox/full)          │     │
+│  │  • Delegates to specialized subagents (@name)                 │     │
+│  │  • Progressive Skill Index & AST Security Audit               │     │
+│  │  • Knowledge Graph: 3 Scopes (User, Language, Project)        │     │
+│  └───────────────────────────────────────────────────────────────┘     │
+│                                │                                       │
+│  ┌─────────────────────────────┼───────────────────────────────┐       │
+│  │  SUBAGENT SYSTEM            │  Autonomous & Specialized     │       │
+│  │                                                             │       │
+│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐┌───────────┐   │       │
+│  │  │Explorer ││Proposer││Specifier││ Designer ││  Planner  │   │       │
+│  │  └─────────┘└────────┘└────────┘└──────────┘└───────────┘   │       │
+│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐┌───────────┐   │       │
+│  │  │Implement││Verifier││Reviewer││ Debugger ││ Researcher│   │       │
+│  │  └─────────┘└────────┘└────────┘└──────────┘└───────────┘   │       │
+│  │  ┌─────────┐┌────────┐┌─────────────────────────────────┐   │       │
+│  │  │ Learner ││Archiver││ Dynamic Subagents Generator    │   │       │
+│  │  └─────────┘└────────┘└─────────────────────────────────┘   │       │
+│  └─────────────────────────────────────────────────────────────┘       │
+│                                │                                       │
+│  ┌─────────────────────────────┴───────────────────────────────┐       │
+│  │  ADAPTERS & INFRASTRUCTURE                                  │       │
+│  │  ┌────────────────────┐┌──────────────────┐┌──────────────┐ │       │
+│  │  │ 19 LLM Providers   ││ Memory & Store   ││ Security     │ │       │
+│  │  │ Credential Pool    ││ SQLite + Engram  ││ AST Audit    │ │       │
+│  │  │ Auto-Failover/Cool ││ Knowledge Graph  ││ PolicyGuard  │ │       │
+│  │  └────────────────────┘└──────────────────┘└──────────────┘ │       │
+│  │  ┌────────────────────┐┌──────────────────┐┌──────────────┐ │       │
+│  │  │ Cyberpunk TUI      ││ Web UI Dashboard ││ Gateway      │ │       │
+│  │  │ Bubbletea + Lipgloss││ templ-islands/SSE││ Telegram/TG  │ │       │
+│  │  │ Wails Desktop      ││ (gaia serve)     ││ Discord/Slack│ │       │
+│  │  └────────────────────┘└──────────────────┘└──────────────┘ │       │
+│  └─────────────────────────────────────────────────────────────┘       │
+└────────────────────────────────────────────────────────────────────────┘` }
 				</pre>
 			</div>
 		</div>
