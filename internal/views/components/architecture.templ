@@ -1,0 +1,93 @@
+package components
+
+type StatItem struct {
+	Label string
+	Value string
+}
+
+var StatsList = []StatItem{
+	{Label: "Subagentes", Value: "12+"},
+	{Label: "Paquetes Go", Value: "31"},
+	{Label: "Comandos CLI", Value: "30+"},
+	{Label: "Lentes Review", Value: "4"},
+	{Label: "Plataformas Gateway", Value: "5"},
+	{Label: "Providers LLM", Value: "4+"},
+}
+
+templ Architecture() {
+	<section id="architecture" class="relative py-32 px-6">
+		<div class="bg-glow-orb bg-neon-emerald bottom-0 left-0 opacity-10"></div>
+
+		<div class="max-w-5xl mx-auto relative z-10">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+					<span class="text-gradient-cyan">Hexagonal</span> Architecture
+				</h2>
+				<p class="text-text-secondary text-lg max-w-2xl mx-auto">
+					Puertos y adaptadores. 31 paquetes Go. Un solo binario.
+				</p>
+			</div>
+
+			<!-- Stats Grid -->
+			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+				for _, stat := range StatsList {
+					<div class="glass-card rounded-xl p-5 text-center border border-border-subtle hover:border-border-neon-cyan/30 hover:bg-bg-card-hover transition-all duration-300">
+						<div class="text-2xl font-extrabold text-gradient mb-1">{ stat.Value }</div>
+						<div class="text-xs text-text-muted font-mono">{ stat.Label }</div>
+					</div>
+				}
+			</div>
+
+			<!-- Architecture Diagram -->
+			<div class="glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl">
+				<div class="flex items-center justify-between mb-4 pb-3 border-b border-border-subtle">
+					<span class="text-xs font-mono text-neon-cyan flex items-center gap-2">
+						<span class="w-2 h-2 rounded-full bg-neon-cyan animate-pulse"></span>
+						Architecture Map
+					</span>
+					<span class="text-xs font-mono text-text-muted">Single Binary Topology</span>
+				</div>
+				<pre class="font-mono text-xs sm:text-xs leading-relaxed text-text-secondary overflow-x-auto p-2">
+{ `┌──────────────────────────────────────────────────────────┐
+│                     GAIA (single binary)                    │
+│                                                            │
+│  ┌─────────────────────────────────────────────────┐      │
+│  │  ORCHESTRATOR — Main Agent Loop                 │      │
+│  │  • Think → Act → Learn → Persist                │      │
+│  │  • Delegates to specialized subagents           │      │
+│  │  • Synthesizes results, never does the work     │      │
+│  │  • Progressive skill index (~3k tokens)         │      │
+│  │  • Knowledge graph recall per turn              │      │
+│  └─────────────────────────────────────────────────┘      │
+│                           │                                │
+│  ┌────────────────────────┼────────────────────────┐      │
+│  │  SUBAGENT SYSTEM       │  Autonomous & Specialized│      │
+│  │                        │                         │      │
+│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐   │      │
+│  │  │Explorer ││Proposer││Specifier││ Designer  │   │      │
+│  │  └─────────┘└────────┘└────────┘└──────────┘   │      │
+│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐   │      │
+│  │  │ Planner ││Implement││Verifier││ Reviewer  │   │      │
+│  │  └─────────┘└────────┘└────────┘└──────────┘   │      │
+│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐   │      │
+│  │  │ Learner ││Research││Archiver││ Debugger  │   │      │
+│  │  └─────────┘└────────┘└────────┘└──────────┘   │      │
+│  └─────────────────────────────────────────────────┘      │
+│                           │                                │
+│  ┌─────────────────────────────────────────────────┐      │
+│  │  INFRASTRUCTURE                                  │      │
+│  │  ┌────────┐┌──────────┐┌──────┐┌───────────┐   │      │
+│  │  │LLM     ││Tool Exec ││Memory││Knowledge   │   │      │
+│  │  │Provider││Engine    ││Engram││Graph Recall│   │      │
+│  │  └────────┘└──────────┘└──────┘└───────────┘   │      │
+│  │  ┌────────┐┌──────────┐┌──────┐┌───────────┐   │      │
+│  │  │TUI     ││Desktop   ││MCP   ││Skills     │   │      │
+│  │  │BubbleTea││Wails     ││Client││Loader     │   │      │
+│  │  └────────┘└──────────┘└──────┘└───────────┘   │      │
+│  └─────────────────────────────────────────────────┘      │
+└──────────────────────────────────────────────────────────┘` }
+				</pre>
+			</div>
+		</div>
+	</section>
+}

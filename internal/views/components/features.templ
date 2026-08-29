@@ -1,0 +1,107 @@
+package components
+
+type FeatureItem struct {
+	Title string
+	Desc  string
+	Icon  templ.Component
+	Glow  string
+}
+
+templ Features() {
+	<section id="features" class="relative py-32 px-6">
+		<!-- Ambient glow -->
+		<div class="bg-glow-orb bg-neon-cyan top-0 left-[50%] -translate-x-1/2 opacity-10"></div>
+
+		<div class="max-w-7xl mx-auto relative z-10">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+					Everything You Need, <span class="text-gradient">Nothing You Don't</span>
+				</h2>
+				<p class="text-text-secondary text-lg max-w-2xl mx-auto">
+					GAIA combina lo mejor de Hermes Agent, Gentle-AI, ogcode y pi-go en un solo
+					binario Go. Sin Python, sin Node.js, sin ffmpeg.
+				</p>
+			</div>
+
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+				<!-- Card 1 -->
+				<div class="group glass-card rounded-2xl p-8 border border-border-subtle hover:border-border-neon-cyan hover:bg-bg-card-hover hover:glow-cyan transition-all duration-500 cursor-default">
+					<div class="mb-5 text-neon-cyan">
+						<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"></path>
+						</svg>
+					</div>
+					<h3 class="text-lg font-semibold text-text-primary mb-2">12+ Subagentes Especializados</h3>
+					<p class="text-sm text-text-secondary leading-relaxed">
+						Cada subagente aprende independientemente en su dominio. El Designer no empeora porque el Implementer tuvo un mal día.
+					</p>
+				</div>
+
+				<!-- Card 2 -->
+				<div class="group glass-card rounded-2xl p-8 border border-border-subtle hover:border-border-neon-emerald hover:bg-bg-card-hover hover:glow-emerald transition-all duration-500 cursor-default">
+					<div class="mb-5 text-neon-emerald">
+						<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"></path>
+						</svg>
+					</div>
+					<h3 class="text-lg font-semibold text-text-primary mb-2">Mixture of Agents (MoA)</h3>
+					<p class="text-sm text-text-secondary leading-relaxed">
+						Ejecuta múltiples LLMs en paralelo sobre la misma tarea. Recolecta todas las respuestas y las sintetiza en un resultado coherente.
+					</p>
+				</div>
+
+				<!-- Card 3 -->
+				<div class="group glass-card rounded-2xl p-8 border border-border-subtle hover:border-border-neon-cyan hover:bg-bg-card-hover hover:glow-purple transition-all duration-500 cursor-default">
+					<div class="mb-5 text-neon-purple">
+						<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"></path>
+						</svg>
+					</div>
+					<h3 class="text-lg font-semibold text-text-primary mb-2">Spec-Driven Development</h3>
+					<p class="text-sm text-text-secondary leading-relaxed">
+						Pipeline nativo de 8 fases: explorar → proponer → spec → diseñar → tareas → implementar → verificar → archivar.
+					</p>
+				</div>
+
+				<!-- Card 4 -->
+				<div class="group glass-card rounded-2xl p-8 border border-border-subtle hover:border-border-neon-cyan hover:bg-bg-card-hover hover:glow-cyan transition-all duration-500 cursor-default">
+					<div class="mb-5 text-neon-cyan">
+						<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3.75H6m2.25-2.25H7.5m4.125 0H12m-3.75 7.5h11.25M12 3.75v16.5M5.625 3.75h12.75a1.875 1.875 0 011.875 1.875v16.5a1.875 1.875 0 01-1.875 1.875H5.625a1.875 1.875 0 01-1.875-1.875V5.625c0-1.036.84-1.875 1.875-1.875z"></path>
+						</svg>
+					</div>
+					<h3 class="text-lg font-semibold text-text-primary mb-2">BR Code Review</h3>
+					<p class="text-sm text-text-secondary leading-relaxed">
+						4 lentes acotados + recibos con hash SHA256. Pre-commit y pre-push validan contra el mismo recibo — sin re-reviews silenciosas.
+					</p>
+				</div>
+
+				<!-- Card 5 -->
+				<div class="group glass-card rounded-2xl p-8 border border-border-subtle hover:border-border-neon-emerald hover:bg-bg-card-hover hover:glow-emerald transition-all duration-500 cursor-default">
+					<div class="mb-5 text-neon-emerald">
+						<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"></path>
+						</svg>
+					</div>
+					<h3 class="text-lg font-semibold text-text-primary mb-2">Knowledge Graph</h3>
+					<p class="text-sm text-text-secondary leading-relaxed">
+						Aprendizaje en 3 niveles: ámbito de usuario, lenguaje y proyecto. Auto-detección de lenguaje desde go.mod, package.json y más.
+					</p>
+				</div>
+
+				<!-- Card 6 -->
+				<div class="group glass-card rounded-2xl p-8 border border-border-subtle hover:border-border-neon-cyan hover:bg-bg-card-hover hover:glow-purple transition-all duration-500 cursor-default">
+					<div class="mb-5 text-neon-purple">
+						<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"></path>
+						</svg>
+					</div>
+					<h3 class="text-lg font-semibold text-text-primary mb-2">Multi-Platform Gateway</h3>
+					<p class="text-sm text-text-secondary leading-relaxed">
+						Conectá GAIA a Telegram, Discord, Slack, WhatsApp y Signal. Un solo binario, cero dependencias externas.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+}

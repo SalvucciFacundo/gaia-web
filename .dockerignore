@@ -1,0 +1,7 @@
+.git
+.gitignore
+.ref
+.atl
+bin
+tmp
+*.log

@@ -1,0 +1,20 @@
+package pages
+
+import (
+	"github.com/SalvucciFacundo/gaia-web/internal/views/components"
+	"github.com/SalvucciFacundo/gaia-web/internal/views/layout"
+)
+
+templ Home() {
+	@layout.Base("GAIA — Go Autonomous Intelligence Agent", "Programming-first autonomous agent written in Go. Single binary, zero external dependencies, 12+ subagents, SDD workflow, and persistent memory.") {
+		@components.Navbar()
+		<main class="flex-1">
+			@components.Hero()
+			@components.Features()
+			@components.Subagents()
+			@components.Architecture()
+			@components.QuickStart()
+		</main>
+		@components.Footer()
+	}
+}

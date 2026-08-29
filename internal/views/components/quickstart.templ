@@ -1,0 +1,90 @@
+package components
+
+type CodeSnippet struct {
+	Label string
+	Code  string
+}
+
+var SnippetsList = []CodeSnippet{
+	{
+		Label: "macOS / Linux",
+		Code:  "git clone https://github.com/SalvucciFacundo/gaia.git\ncd gaia\ngo build -o gaia ./cmd/gaia/\n./gaia",
+	},
+	{
+		Label: "Windows (PowerShell)",
+		Code:  ".\\install.ps1",
+	},
+	{
+		Label: "Docker Backend",
+		Code:  "gaia exec \"explain this project\" --backend docker",
+	},
+	{
+		Label: "SSH Backend",
+		Code:  "gaia exec \"list files\" --backend ssh://user@server",
+	},
+}
+
+templ QuickStart() {
+	<section id="quickstart" class="relative py-32 px-6">
+		<div class="bg-glow-orb bg-neon-cyan bottom-0 right-0 opacity-10"></div>
+
+		<div class="max-w-5xl mx-auto relative z-10">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+					Get Started in <span class="text-gradient-emerald">Seconds</span>
+				</h2>
+				<p class="text-text-secondary text-lg max-w-2xl mx-auto">
+					Un solo comando y ya estás corriendo. Sin Python, sin Node.js, sin ffmpeg.
+				</p>
+			</div>
+
+			<div class="grid md:grid-cols-2 gap-6">
+				for _, block := range SnippetsList {
+					<div class="glass-card rounded-2xl border border-border-subtle overflow-hidden group hover:border-border-neon-emerald/30 transition-all duration-300">
+						<!-- Header -->
+						<div class="flex items-center justify-between px-5 py-3 border-b border-border-subtle bg-bg-surface/50">
+							<div class="flex items-center gap-2">
+								<span class="w-2.5 h-2.5 rounded-full bg-neon-emerald/60"></span>
+								<span class="text-xs font-mono text-text-muted">{ block.Label }</span>
+							</div>
+							<button
+								onclick={ templ.ComponentScript{Call: "copyCode(this, " + templ.EscapeString(`"`+block.Code+`"`) + ")"} }
+								class="text-xs font-mono text-text-muted hover:text-neon-cyan transition-colors"
+							>
+								copy
+							</button>
+						</div>
+
+						<!-- Code -->
+						<pre class="p-5 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto">
+							<code class="text-text-secondary">
+								{ block.Code }
+							</code>
+						</pre>
+					</div>
+				}
+			</div>
+
+			<!-- First Run -->
+			<div class="mt-8 glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle shadow-lg">
+				<div class="flex items-start gap-4">
+					<div class="w-10 h-10 rounded-xl bg-neon-cyan/10 border border-neon-cyan/20 flex items-center justify-center flex-shrink-0 text-neon-cyan font-bold text-lg">
+						1
+					</div>
+					<div class="flex-1">
+						<h4 class="font-semibold text-text-primary mb-1">First Run</h4>
+						<p class="text-sm text-text-secondary mb-3">
+							En el primer inicio, GAIA abre un asistente de configuración interactivo para
+							configurar tu proveedor LLM e instalar las skills recomendadas.
+						</p>
+						<div class="glass-card rounded-xl p-4 border border-border-subtle font-mono text-xs sm:text-sm">
+							<span class="text-neon-emerald">$</span> <span class="text-text-primary">gaia</span>
+							<br/>
+							<span class="text-text-muted italic"># Setup wizard starts automatically</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}
