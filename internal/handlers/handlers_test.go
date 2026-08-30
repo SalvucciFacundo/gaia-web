@@ -51,7 +51,7 @@ func TestHomeHandler(t *testing.T) {
 		expectedStrings := []string{
 			"GAIA",
 			"Go Autonomous Intelligence Agent",
-			"12+ Subagentes Especializados",
+			"12+ Specialized Subagents",
 			"Hexagonal",
 			"Quick Start",
 		}

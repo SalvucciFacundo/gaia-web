@@ -14,12 +14,12 @@ type StatItem struct {
 }
 
 var StatsList = []StatItem{
-	{Label: "Subagentes", Value: "12+"},
-	{Label: "Paquetes Go", Value: "33"},
-	{Label: "Comandos CLI", Value: "30+"},
-	{Label: "Providers LLM", Value: "19"},
-	{Label: "Interfaces UI", Value: "3"},
-	{Label: "Plataformas Gateway", Value: "5"},
+	{Label: "Subagents", Value: "12+"},
+	{Label: "Go Packages", Value: "33"},
+	{Label: "CLI Commands", Value: "30+"},
+	{Label: "LLM Providers", Value: "19"},
+	{Label: "UI Interfaces", Value: "3"},
+	{Label: "Gateway Platforms", Value: "5"},
 }
 
 func Architecture() templ.Component {
@@ -43,7 +43,7 @@ func Architecture() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"architecture\" class=\"relative py-32 px-6\"><div class=\"bg-glow-orb bg-neon-emerald bottom-0 left-0 opacity-10\"></div><div class=\"max-w-5xl mx-auto relative z-10\"><div class=\"text-center mb-16\"><h2 class=\"text-4xl md:text-5xl font-extrabold mb-4\"><span class=\"text-gradient-cyan\">Hexagonal</span> Architecture &amp; SDD</h2><p class=\"text-text-secondary text-lg max-w-2xl mx-auto\">Puertos y adaptadores. Pipeline estructurado de 8 fases. 33 paquetes Go.</p></div><!-- Stats Grid --><div class=\"grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"architecture\" class=\"relative py-32 px-6\"><div class=\"bg-glow-orb bg-neon-emerald bottom-0 left-0 opacity-10\"></div><div class=\"max-w-5xl mx-auto relative z-10\"><div class=\"text-center mb-16\"><h2 class=\"text-4xl md:text-5xl font-extrabold mb-4\"><span class=\"text-gradient-cyan\">Hexagonal</span> Architecture &amp; SDD</h2><p class=\"text-text-secondary text-lg max-w-2xl mx-auto\">Ports and adapters. 8-phase structured SDD pipeline. 33 Go packages in a single binary.</p></div><!-- Stats Grid --><div class=\"grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -79,7 +79,7 @@ func Architecture() templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div><!-- Visual Mermaid Diagram 1: Hexagonal Architecture --><div class=\"glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl mb-8\"><div class=\"flex items-center justify-between mb-6 pb-3 border-b border-border-subtle\"><span class=\"text-xs font-mono text-neon-cyan flex items-center gap-2\"><span class=\"w-2 h-2 rounded-full bg-neon-cyan animate-pulse\"></span> Mermaid Architecture Flow</span> <span class=\"text-xs font-mono text-text-muted\">Interactive Ports &amp; Adapters</span></div><div class=\"mermaid flex justify-center py-4 overflow-x-auto\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div><!-- Visual Mermaid Diagram 1: Hexagonal Architecture --><div class=\"glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl mb-8\"><div class=\"flex items-center justify-between mb-6 pb-3 border-b border-border-subtle\"><span class=\"text-xs font-mono text-neon-cyan flex items-center gap-2\"><span class=\"w-2 h-2 rounded-full bg-neon-cyan animate-pulse\"></span> Hexagonal Architecture Flow</span> <span class=\"text-xs font-mono text-text-muted\">Interactive Ports &amp; Adapters</span></div><div class=\"mermaid flex justify-center py-4 overflow-x-auto\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -117,7 +117,7 @@ func Architecture() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</div></div><!-- Visual Mermaid Diagram 2: SDD 8-Stage Pipeline --><div class=\"glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl mb-8\"><div class=\"flex items-center justify-between mb-6 pb-3 border-b border-border-subtle\"><span class=\"text-xs font-mono text-neon-emerald flex items-center gap-2\"><span class=\"w-2 h-2 rounded-full bg-neon-emerald animate-pulse\"></span> Spec-Driven Development Pipeline</span> <span class=\"text-xs font-mono text-text-muted\">8-Phase Continuous Delivery</span></div><div class=\"mermaid flex justify-center py-4 overflow-x-auto\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</div></div><!-- Visual Mermaid Diagram 2: SDD 8-Stage Pipeline --><div class=\"glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl\"><div class=\"flex items-center justify-between mb-6 pb-3 border-b border-border-subtle\"><span class=\"text-xs font-mono text-neon-emerald flex items-center gap-2\"><span class=\"w-2 h-2 rounded-full bg-neon-emerald animate-pulse\"></span> Spec-Driven Development Pipeline</span> <span class=\"text-xs font-mono text-text-muted\">8-Phase Continuous Delivery</span></div><div class=\"mermaid flex justify-center py-4 overflow-x-auto\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -139,59 +139,7 @@ func Architecture() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</div></div><!-- ASCII Blueprint --><div class=\"glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl\"><div class=\"flex items-center justify-between mb-4 pb-3 border-b border-border-subtle\"><span class=\"text-xs font-mono text-neon-purple flex items-center gap-2\"><span class=\"w-2 h-2 rounded-full bg-neon-purple animate-pulse\"></span> ASCII Blueprint Topology</span> <span class=\"text-xs font-mono text-text-muted\">Single Binary Topology</span></div><pre class=\"font-mono text-xs leading-relaxed text-text-secondary overflow-x-auto p-2\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var6 string
-		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(`┌────────────────────────────────────────────────────────────────────────┐
-│                        GAIA (single Go binary)                         │
-│                                                                        │
-│  ┌───────────────────────────────────────────────────────────────┐     │
-│  │  ORCHESTRATOR & KERNEL — Main Agent Loop                      │     │
-│  │  • Think → Act → Learn → Persist                              │     │
-│  │  • PolicyGuard: Tier Permissions (read/sandbox/full)          │     │
-│  │  • Delegates to specialized subagents (@name)                 │     │
-│  │  • Progressive Skill Index & AST Security Audit               │     │
-│  │  • Knowledge Graph: 3 Scopes (User, Language, Project)        │     │
-│  └───────────────────────────────────────────────────────────────┘     │
-│                                │                                       │
-│  ┌─────────────────────────────┼───────────────────────────────┐       │
-│  │  SUBAGENT SYSTEM            │  Autonomous & Specialized     │       │
-│  │                                                             │       │
-│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐┌───────────┐   │       │
-│  │  │Explorer ││Proposer││Specifier││ Designer ││  Planner  │   │       │
-│  │  └─────────┘└────────┘└────────┘└──────────┘└───────────┘   │       │
-│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐┌───────────┐   │       │
-│  │  │Implement││Verifier││Reviewer││ Debugger ││ Researcher│   │       │
-│  │  └─────────┘└────────┘└────────┘└──────────┘└───────────┘   │       │
-│  │  ┌─────────┐┌────────┐┌─────────────────────────────────┐   │       │
-│  │  │ Learner ││Archiver││ Dynamic Subagents Generator    │   │       │
-│  │  └─────────┘└────────┘└─────────────────────────────────┘   │       │
-│  └─────────────────────────────────────────────────────────────┘       │
-│                                │                                       │
-│  ┌─────────────────────────────┴───────────────────────────────┐       │
-│  │  ADAPTERS & INFRASTRUCTURE                                  │       │
-│  │  ┌────────────────────┐┌──────────────────┐┌──────────────┐ │       │
-│  │  │ 19 LLM Providers   ││ Memory & Store   ││ Security     │ │       │
-│  │  │ Credential Pool    ││ SQLite + Engram  ││ AST Audit    │ │       │
-│  │  │ Auto-Failover/Cool ││ Knowledge Graph  ││ PolicyGuard  │ │       │
-│  │  └────────────────────┘└──────────────────┘└──────────────┘ │       │
-│  │  ┌────────────────────┐┌──────────────────┐┌──────────────┐ │       │
-│  │  │ Cyberpunk TUI      ││ Web UI Dashboard ││ Gateway      │ │       │
-│  │  │ Bubbletea + Lipgloss││ templ-islands/SSE││ Telegram/TG  │ │       │
-│  │  │ Wails Desktop      ││ (gaia serve)     ││ Discord/Slack│ │       │
-│  │  └────────────────────┘└──────────────────┘└──────────────┘ │       │
-│  └─────────────────────────────────────────────────────────────┘       │
-└────────────────────────────────────────────────────────────────────────┘`)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/views/components/architecture.templ`, Line: 152, Col: 223}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</pre></div></div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</div></div></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

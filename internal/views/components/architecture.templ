@@ -6,12 +6,12 @@ type StatItem struct {
 }
 
 var StatsList = []StatItem{
-	{Label: "Subagentes", Value: "12+"},
-	{Label: "Paquetes Go", Value: "33"},
-	{Label: "Comandos CLI", Value: "30+"},
-	{Label: "Providers LLM", Value: "19"},
-	{Label: "Interfaces UI", Value: "3"},
-	{Label: "Plataformas Gateway", Value: "5"},
+	{Label: "Subagents", Value: "12+"},
+	{Label: "Go Packages", Value: "33"},
+	{Label: "CLI Commands", Value: "30+"},
+	{Label: "LLM Providers", Value: "19"},
+	{Label: "UI Interfaces", Value: "3"},
+	{Label: "Gateway Platforms", Value: "5"},
 }
 
 templ Architecture() {
@@ -24,7 +24,7 @@ templ Architecture() {
 					<span class="text-gradient-cyan">Hexagonal</span> Architecture &amp; SDD
 				</h2>
 				<p class="text-text-secondary text-lg max-w-2xl mx-auto">
-					Puertos y adaptadores. Pipeline estructurado de 8 fases. 33 paquetes Go.
+					Ports and adapters. 8-phase structured SDD pipeline. 33 Go packages in a single binary.
 				</p>
 			</div>
 
@@ -43,7 +43,7 @@ templ Architecture() {
 				<div class="flex items-center justify-between mb-6 pb-3 border-b border-border-subtle">
 					<span class="text-xs font-mono text-neon-cyan flex items-center gap-2">
 						<span class="w-2 h-2 rounded-full bg-neon-cyan animate-pulse"></span>
-						Mermaid Architecture Flow
+						Hexagonal Architecture Flow
 					</span>
 					<span class="text-xs font-mono text-text-muted">Interactive Ports &amp; Adapters</span>
 				</div>
@@ -78,7 +78,7 @@ templ Architecture() {
 			</div>
 
 			<!-- Visual Mermaid Diagram 2: SDD 8-Stage Pipeline -->
-			<div class="glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl mb-8">
+			<div class="glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl">
 				<div class="flex items-center justify-between mb-6 pb-3 border-b border-border-subtle">
 					<span class="text-xs font-mono text-neon-emerald flex items-center gap-2">
 						<span class="w-2 h-2 rounded-full bg-neon-emerald animate-pulse"></span>
@@ -98,59 +98,6 @@ templ Architecture() {
     V -. "Fail / Fix" .-> A
 ` }
 				</div>
-			</div>
-
-			<!-- ASCII Blueprint -->
-			<div class="glass-card rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden shadow-2xl">
-				<div class="flex items-center justify-between mb-4 pb-3 border-b border-border-subtle">
-					<span class="text-xs font-mono text-neon-purple flex items-center gap-2">
-						<span class="w-2 h-2 rounded-full bg-neon-purple animate-pulse"></span>
-						ASCII Blueprint Topology
-					</span>
-					<span class="text-xs font-mono text-text-muted">Single Binary Topology</span>
-				</div>
-				<pre class="font-mono text-xs leading-relaxed text-text-secondary overflow-x-auto p-2">
-{ `┌────────────────────────────────────────────────────────────────────────┐
-│                        GAIA (single Go binary)                         │
-│                                                                        │
-│  ┌───────────────────────────────────────────────────────────────┐     │
-│  │  ORCHESTRATOR & KERNEL — Main Agent Loop                      │     │
-│  │  • Think → Act → Learn → Persist                              │     │
-│  │  • PolicyGuard: Tier Permissions (read/sandbox/full)          │     │
-│  │  • Delegates to specialized subagents (@name)                 │     │
-│  │  • Progressive Skill Index & AST Security Audit               │     │
-│  │  • Knowledge Graph: 3 Scopes (User, Language, Project)        │     │
-│  └───────────────────────────────────────────────────────────────┘     │
-│                                │                                       │
-│  ┌─────────────────────────────┼───────────────────────────────┐       │
-│  │  SUBAGENT SYSTEM            │  Autonomous & Specialized     │       │
-│  │                                                             │       │
-│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐┌───────────┐   │       │
-│  │  │Explorer ││Proposer││Specifier││ Designer ││  Planner  │   │       │
-│  │  └─────────┘└────────┘└────────┘└──────────┘└───────────┘   │       │
-│  │  ┌─────────┐┌────────┐┌────────┐┌──────────┐┌───────────┐   │       │
-│  │  │Implement││Verifier││Reviewer││ Debugger ││ Researcher│   │       │
-│  │  └─────────┘└────────┘└────────┘└──────────┘└───────────┘   │       │
-│  │  ┌─────────┐┌────────┐┌─────────────────────────────────┐   │       │
-│  │  │ Learner ││Archiver││ Dynamic Subagents Generator    │   │       │
-│  │  └─────────┘└────────┘└─────────────────────────────────┘   │       │
-│  └─────────────────────────────────────────────────────────────┘       │
-│                                │                                       │
-│  ┌─────────────────────────────┴───────────────────────────────┐       │
-│  │  ADAPTERS & INFRASTRUCTURE                                  │       │
-│  │  ┌────────────────────┐┌──────────────────┐┌──────────────┐ │       │
-│  │  │ 19 LLM Providers   ││ Memory & Store   ││ Security     │ │       │
-│  │  │ Credential Pool    ││ SQLite + Engram  ││ AST Audit    │ │       │
-│  │  │ Auto-Failover/Cool ││ Knowledge Graph  ││ PolicyGuard  │ │       │
-│  │  └────────────────────┘└──────────────────┘└──────────────┘ │       │
-│  │  ┌────────────────────┐┌──────────────────┐┌──────────────┐ │       │
-│  │  │ Cyberpunk TUI      ││ Web UI Dashboard ││ Gateway      │ │       │
-│  │  │ Bubbletea + Lipgloss││ templ-islands/SSE││ Telegram/TG  │ │       │
-│  │  │ Wails Desktop      ││ (gaia serve)     ││ Discord/Slack│ │       │
-│  │  └────────────────────┘└──────────────────┘└──────────────┘ │       │
-│  └─────────────────────────────────────────────────────────────┘       │
-└────────────────────────────────────────────────────────────────────────┘` }
-				</pre>
 			</div>
 		</div>
 	</section>

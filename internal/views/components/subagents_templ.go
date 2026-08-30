@@ -16,18 +16,18 @@ type Subagent struct {
 }
 
 var SubagentsList = []Subagent{
-	{Name: "Explorer", Type: "SDD", Role: "Investiga codebase, patrones, arquitectura", Emoji: "🔍"},
-	{Name: "Proposer", Type: "SDD", Role: "Crea propuestas de cambio con alcance y riesgos", Emoji: "💡"},
-	{Name: "Specifier", Type: "SDD", Role: "Escribe specs detallados con escenarios", Emoji: "📋"},
-	{Name: "Designer", Type: "SDD", Role: "Arquitectura técnica y diseño de componentes", Emoji: "🏗️"},
-	{Name: "Planner", Type: "SDD", Role: "Divide specs en tareas concretas", Emoji: "📐"},
-	{Name: "Implementer", Type: "SDD", Role: "Escribe código siguiendo specs y tareas", Emoji: "⚡"},
-	{Name: "Verifier", Type: "SDD", Role: "Ejecuta tests y valida contra spec", Emoji: "✅"},
-	{Name: "Reviewer", Type: "BR", Role: "Code review: riesgo, resiliencia, legibilidad", Emoji: "👁️"},
-	{Name: "Learner", Type: "BG", Role: "Analiza uso, crea/mejora skills", Emoji: "🧠"},
-	{Name: "Researcher", Type: "OD", Role: "Web research y descubrimiento de APIs", Emoji: "📚"},
-	{Name: "Archiver", Type: "SDD", Role: "Cierra cambios completados y persiste estado", Emoji: "📦"},
-	{Name: "Debugger", Type: "OD", Role: "Análisis de bugs, causa raíz, fix", Emoji: "🐛"},
+	{Name: "Explorer", Type: "SDD", Role: "Investigates codebase, architecture, and design patterns", Emoji: "🔍"},
+	{Name: "Proposer", Type: "SDD", Role: "Creates structured change proposals with scope and risk analysis", Emoji: "💡"},
+	{Name: "Specifier", Type: "SDD", Role: "Authors comprehensive specifications and acceptance criteria", Emoji: "📋"},
+	{Name: "Designer", Type: "SDD", Role: "Designs technical architecture and component interfaces", Emoji: "🏗️"},
+	{Name: "Planner", Type: "SDD", Role: "Breaks down specifications into granular executable tasks", Emoji: "📐"},
+	{Name: "Implementer", Type: "SDD", Role: "Writes production code adhering to specs and task boundaries", Emoji: "⚡"},
+	{Name: "Verifier", Type: "SDD", Role: "Executes test suites and validates implementation against specs", Emoji: "✅"},
+	{Name: "Reviewer", Type: "BR", Role: "Bounded code review across Risk, Resilience, and Readability", Emoji: "👁️"},
+	{Name: "Learner", Type: "BG", Role: "Analyzes usage patterns, synthesizes skills, and refines memory", Emoji: "🧠"},
+	{Name: "Researcher", Type: "OD", Role: "Performs web research, documentation discovery, and API exploration", Emoji: "📚"},
+	{Name: "Archiver", Type: "SDD", Role: "Closes completed change sets and commits terminal records", Emoji: "📦"},
+	{Name: "Debugger", Type: "OD", Role: "Performs root-cause analysis, regression diagnosis, and fixes", Emoji: "🐛"},
 }
 
 func getBadgeClass(agentType string) string {
@@ -64,7 +64,7 @@ func Subagents() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"subagents\" class=\"relative py-32 px-6\"><div class=\"bg-glow-orb bg-neon-purple top-0 right-0 opacity-10\"></div><div class=\"max-w-7xl mx-auto relative z-10\"><div class=\"text-center mb-16\"><h2 class=\"text-4xl md:text-5xl font-extrabold mb-4\"><span class=\"text-gradient-emerald\">12+</span> Subagentes Autónomos</h2><p class=\"text-text-secondary text-lg max-w-2xl mx-auto\">Cada subagente tiene su propio contexto aislado, namespace de memoria, loop de aprendizaje independiente y modelo LLM configurable.</p></div><!-- Desktop Table --><div class=\"hidden lg:block overflow-hidden rounded-2xl border border-border-subtle glass-card\"><table class=\"w-full text-left border-collapse\"><thead><tr class=\"border-b border-border-subtle bg-bg-surface/80\"><th class=\"px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider\">Subagent</th><th class=\"px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider\">Type</th><th class=\"px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider\">Role</th></tr></thead> <tbody class=\"divide-y divide-border-subtle/50\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"subagents\" class=\"relative py-32 px-6\"><div class=\"bg-glow-orb bg-neon-purple top-0 right-0 opacity-10\"></div><div class=\"max-w-7xl mx-auto relative z-10\"><div class=\"text-center mb-16\"><h2 class=\"text-4xl md:text-5xl font-extrabold mb-4\"><span class=\"text-gradient-emerald\">12+</span> Autonomous Subagents</h2><p class=\"text-text-secondary text-lg max-w-2xl mx-auto\">Each subagent operates with isolated context, dedicated SQLite memory namespace, independent learning loop, and configurable LLM tier.</p></div><!-- Desktop Table --><div class=\"hidden lg:block overflow-hidden rounded-2xl border border-border-subtle glass-card shadow-2xl\"><table class=\"w-full text-left border-collapse\"><thead><tr class=\"border-b border-border-subtle bg-bg-surface/80\"><th class=\"px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider\">Subagent</th><th class=\"px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider\">Type</th><th class=\"px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider\">Role &amp; Responsibility</th></tr></thead> <tbody class=\"divide-y divide-border-subtle/50\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
