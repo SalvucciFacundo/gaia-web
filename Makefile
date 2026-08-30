@@ -1,4 +1,4 @@
-.PHONY: all build clean dev templ css tools run test
+.PHONY: all build clean dev templ css tools run test sync-docs
 
 TAILWIND_VERSION ?= v3.4.17
 OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
@@ -34,6 +34,10 @@ tools:
 		chmod +x $(TAILWIND_CLI); \
 	fi
 
+sync-docs:
+	@mkdir -p internal/docs/docs
+	@cp -r docs/* internal/docs/docs/ 2>/dev/null || true
+
 templ:
 	@echo "Generating Templ components..."
 	@templ generate
@@ -46,7 +50,7 @@ css-dev: tools
 	@echo "Watching Tailwind CSS..."
 	@$(TAILWIND_CLI) -i ./src/input.css -o ./static/css/styles.css --watch
 
-build: templ css
+build: sync-docs templ css
 	@echo "Building Go server..."
 	@go build -ldflags="-s -w" -o bin/server ./cmd/server
 
@@ -54,7 +58,7 @@ run: build
 	@echo "Starting server on http://localhost:8080..."
 	@./bin/server
 
-test:
+test: sync-docs
 	@echo "Running tests..."
 	@go test -v ./...
 

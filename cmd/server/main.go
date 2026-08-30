@@ -11,6 +11,7 @@ import (
 	"time"
 
 	gaiaweb "github.com/SalvucciFacundo/gaia-web"
+	"github.com/SalvucciFacundo/gaia-web/internal/docs"
 	"github.com/SalvucciFacundo/gaia-web/internal/handlers"
 )
 
@@ -32,6 +33,9 @@ func main() {
 	}
 	addr := fmt.Sprintf("%s:%s", host, port)
 
+	// Initialize docs service
+	docsSvc := docs.NewService()
+
 	mux := http.NewServeMux()
 
 	// Static assets file server
@@ -46,6 +50,11 @@ func main() {
 	mux.Handle("GET /", handlers.NewHomeHandler())
 	mux.Handle("GET /health", handlers.NewHealthHandler(version))
 	mux.Handle("GET /healthz", handlers.NewHealthHandler(version))
+
+	// Documentation Handlers
+	docsHandler := handlers.NewDocsHandler(docsSvc)
+	mux.HandleFunc("GET /docs", docsHandler.ServeDocs)
+	mux.HandleFunc("GET /docs/{slug}", docsHandler.ServeDocSlug)
 
 	// Middleware chain
 	handler := loggingMiddleware(securityHeadersMiddleware(mux))

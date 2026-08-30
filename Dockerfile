@@ -16,8 +16,9 @@ RUN go mod download
 # Copy source code and configuration
 COPY . .
 
-# Generate Templ and CSS
+# Generate Docs, Templ and CSS
 RUN make tools
+RUN make sync-docs
 RUN make templ
 RUN make css
 

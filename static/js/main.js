@@ -23,12 +23,46 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
-    // Close menu when clicking a link
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
     });
   }
 });
+
+// Docs sidebar mobile toggle
+function toggleDocsSidebar() {
+  const sidebar = document.getElementById('docs-sidebar-container');
+  if (sidebar) {
+    sidebar.classList.toggle('hidden');
+  }
+}
+
+// Docs filter search function
+function filterDocs(query) {
+  const q = query.trim().toLowerCase();
+  const groups = document.querySelectorAll('.doc-category-group');
+
+  groups.forEach(group => {
+    let visibleCount = 0;
+    const items = group.querySelectorAll('.doc-item');
+    items.forEach(item => {
+      const title = (item.getAttribute('data-title') || '').toLowerCase();
+      const category = (item.getAttribute('data-category') || '').toLowerCase();
+      if (title.includes(q) || category.includes(q)) {
+        item.style.display = '';
+        visibleCount++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    if (visibleCount > 0 || q === '') {
+      group.style.display = '';
+    } else {
+      group.style.display = 'none';
+    }
+  });
+}
 
 // Global copy-to-clipboard function
 function copyCode(btn, text) {
