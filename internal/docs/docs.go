@@ -4,7 +4,9 @@ import (
 	"bytes"
 	"embed"
 	"fmt"
+	htmlpkg "html"
 	"html/template"
+	"regexp"
 	"strings"
 	"sync"
 
@@ -16,6 +18,8 @@ import (
 
 //go:embed docs/*.md
 var embeddedDocs embed.FS
+
+var mermaidRegex = regexp.MustCompile(`(?s)<pre><code class="language-mermaid">(.*?)</code></pre>`)
 
 type DocMetadata struct {
 	Slug        string
@@ -311,7 +315,7 @@ func (s *Service) GetDoc(slug string) (*Doc, error) {
 		return nil, fmt.Errorf("failed to parse markdown for %s: %w", slug, err)
 	}
 
-	// Post-process HTML for styling (classes on tables, pre/code blocks, links)
+	// Post-process HTML for styling (classes on tables, pre/code blocks, links, mermaid)
 	htmlStr := buf.String()
 	htmlStr = postProcessHTML(htmlStr)
 
@@ -345,8 +349,19 @@ func (s *Service) GetDoc(slug string) (*Doc, error) {
 }
 
 func postProcessHTML(input string) string {
+	// Process Mermaid code blocks
+	res := mermaidRegex.ReplaceAllStringFunc(input, func(m string) string {
+		match := mermaidRegex.FindStringSubmatch(m)
+		if len(match) > 1 {
+			content := match[1]
+			content = htmlpkg.UnescapeString(content)
+			return "<div class=\"mermaid-container my-6 p-4 rounded-2xl glass-card border border-border-subtle flex justify-center overflow-x-auto shadow-2xl\"><div class=\"mermaid\">" + content + "</div></div>"
+		}
+		return m
+	})
+
 	// Add custom wrapper and styling enhancements to tables
-	res := strings.ReplaceAll(input, "<table>", "<div class=\"overflow-x-auto my-6 rounded-xl border border-border-subtle glass-card\"><table class=\"w-full text-left text-sm border-collapse\">")
+	res = strings.ReplaceAll(res, "<table>", "<div class=\"overflow-x-auto my-6 rounded-xl border border-border-subtle glass-card\"><table class=\"w-full text-left text-sm border-collapse\">")
 	res = strings.ReplaceAll(res, "</table>", "</table></div>")
 	res = strings.ReplaceAll(res, "<thead>", "<thead class=\"bg-bg-surface/90 text-neon-cyan border-b border-border-subtle uppercase text-xs font-mono\">")
 	res = strings.ReplaceAll(res, "<th>", "<th class=\"px-4 py-3 font-semibold\">")

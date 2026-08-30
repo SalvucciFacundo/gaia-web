@@ -1,6 +1,7 @@
 package docs
 
 import (
+	"bytes"
 	"strings"
 	"testing"
 )
@@ -63,6 +64,22 @@ func TestDocsService(t *testing.T) {
 			if !strings.Contains(htmlStr, "<") || !strings.Contains(htmlStr, ">") {
 				t.Errorf("doc %s does not contain valid HTML tags", meta.Slug)
 			}
+		}
+	})
+
+	t.Run("transforms mermaid codeblocks into div.mermaid", func(t *testing.T) {
+		testMarkdown := []byte("```mermaid\nflowchart TD\n  A[Start] --> B[End]\n```")
+		var buf bytes.Buffer
+		if err := svc.markdown.Convert(testMarkdown, &buf); err != nil {
+			t.Fatalf("failed to convert markdown: %v", err)
+		}
+
+		result := postProcessHTML(buf.String())
+		if !strings.Contains(result, "<div class=\"mermaid\">") {
+			t.Errorf("expected result to contain '<div class=\"mermaid\">', got:\n%s", result)
+		}
+		if !strings.Contains(result, "flowchart TD") {
+			t.Errorf("expected result to contain 'flowchart TD', got:\n%s", result)
 		}
 	})
 
